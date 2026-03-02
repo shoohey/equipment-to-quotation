@@ -1,0 +1,299 @@
+/* メインCSS */
+
+:root {
+    --primary-blue: #0d6efd;
+    --hashimoto-navy: #1a3a5c;
+}
+
+body {
+    font-family: "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+.navbar {
+    background-color: var(--hashimoto-navy) !important;
+}
+
+/* アップロードエリア */
+.upload-area {
+    border: 3px dashed #ccc;
+    border-radius: 16px;
+    padding: 60px 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    background: #fff;
+}
+
+.upload-area:hover,
+.upload-area.drag-over {
+    border-color: var(--primary-blue);
+    background-color: #e8f0fe;
+}
+
+.upload-area .upload-icon {
+    font-size: 4rem;
+    color: #6c757d;
+    margin-bottom: 1rem;
+}
+
+.upload-area.drag-over .upload-icon {
+    color: var(--primary-blue);
+}
+
+/* AI解析アニメーション */
+.analyzing-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.analyzing-overlay.active {
+    display: flex;
+}
+
+.analyzing-overlay .spinner-border {
+    width: 4rem;
+    height: 4rem;
+}
+
+.analyzing-overlay p {
+    color: #fff;
+    font-size: 1.3rem;
+    margin-top: 1.5rem;
+}
+
+.analyzing-progress {
+    width: 300px;
+    margin-top: 1rem;
+}
+
+/* 機器テーブル */
+.equipment-table th {
+    background-color: var(--hashimoto-navy);
+    color: #fff;
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+.equipment-table td {
+    font-size: 0.85rem;
+    vertical-align: middle;
+}
+
+.equipment-table .editable {
+    cursor: pointer;
+    border-bottom: 1px dashed #6c757d;
+}
+
+.equipment-table .editable:hover {
+    background-color: #fff3cd;
+}
+
+.equipment-table input.edit-input {
+    width: 100%;
+    border: 2px solid var(--primary-blue);
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-size: 0.85rem;
+}
+
+/* カテゴリタブ */
+.category-tabs .nav-link {
+    font-weight: 600;
+    color: #495057;
+}
+
+.category-tabs .nav-link.active {
+    color: var(--hashimoto-navy);
+    border-bottom: 3px solid var(--hashimoto-navy);
+}
+
+/* サマリーカード */
+.summary-card {
+    border-left: 4px solid var(--primary-blue);
+    transition: transform 0.2s;
+}
+
+.summary-card:hover {
+    transform: translateY(-2px);
+}
+
+.summary-card .category-icon {
+    font-size: 2rem;
+    color: var(--hashimoto-navy);
+}
+
+/* 見積書プレビュー */
+.quotation-preview {
+    background: #fff;
+    border: 1px solid #dee2e6;
+    padding: 40px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.quotation-preview .q-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 1em;
+    margin-bottom: 2rem;
+    color: #333;
+}
+
+.quotation-preview .q-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.quotation-preview .q-client {
+    font-size: 1.1rem;
+    border-bottom: 1px solid #333;
+    padding-bottom: 4px;
+}
+
+.quotation-preview .q-total-box {
+    border: 2px solid var(--hashimoto-navy);
+    padding: 12px 24px;
+    text-align: center;
+    margin: 1.5rem 0;
+    background: #f8f9fa;
+}
+
+.quotation-preview .q-total-box .amount {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: var(--hashimoto-navy);
+}
+
+.quotation-preview table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8rem;
+}
+
+.quotation-preview table th {
+    background: var(--hashimoto-navy);
+    color: #fff;
+    padding: 6px 8px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.quotation-preview table td {
+    border-bottom: 1px solid #dee2e6;
+    padding: 5px 8px;
+}
+
+.quotation-preview table td.text-end {
+    text-align: right;
+}
+
+.quotation-preview .q-summary {
+    text-align: right;
+    margin-top: 1rem;
+}
+
+.quotation-preview .q-summary td {
+    padding: 4px 8px;
+}
+
+.quotation-preview .q-summary .total-row td {
+    font-weight: bold;
+    font-size: 1.1rem;
+    border-top: 2px solid #333;
+}
+
+/* デモボタン */
+.btn-demo {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    border: none;
+    padding: 12px 32px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+.btn-demo:hover {
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+/* ステップインジケーター */
+.step-indicator {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.step-indicator .step {
+    display: flex;
+    align-items: center;
+    color: #adb5bd;
+}
+
+.step-indicator .step.active {
+    color: var(--hashimoto-navy);
+}
+
+.step-indicator .step .step-num {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #dee2e6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+.step-indicator .step.active .step-num {
+    background: var(--hashimoto-navy);
+    color: #fff;
+}
+
+.step-indicator .step-divider {
+    width: 60px;
+    height: 2px;
+    background: #dee2e6;
+    margin: 0 12px;
+    align-self: center;
+}
+
+/* 印刷用 */
+@media print {
+    .navbar, footer, .no-print {
+        display: none !important;
+    }
+
+    .quotation-preview {
+        border: none;
+        box-shadow: none;
+        padding: 0;
+    }
+
+    body {
+        background: #fff;
+    }
+}

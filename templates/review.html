@@ -1,0 +1,172 @@
+{% extends "base.html" %}
+
+{% block title %}機器データ確認{% endblock %}
+
+{% block content %}
+<!-- ステップ -->
+<div class="step-indicator">
+    <div class="step">
+        <div class="step-num">1</div>
+        <span>アップロード</span>
+    </div>
+    <div class="step-divider"></div>
+    <div class="step active">
+        <div class="step-num">2</div>
+        <span>データ確認</span>
+    </div>
+    <div class="step-divider"></div>
+    <div class="step">
+        <div class="step-num">3</div>
+        <span>見積書作成</span>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h3><i class="bi bi-table"></i> 機器データ確認</h3>
+            <div>
+                <a href="/" class="btn btn-outline-secondary me-2">
+                    <i class="bi bi-arrow-left"></i> 戻る
+                </a>
+                <form action="/quotation" method="post" class="d-inline" id="quotationForm">
+                    <input type="hidden" name="equipment_data" id="equipmentData"
+                           value='{{ equipment_json }}'>
+                    <button type="submit" class="btn btn-primary btn-lg">
+                        <i class="bi bi-file-text"></i> 見積書を作成
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <p class="text-muted">
+            件名: <strong>{{ equipment.project_name }}</strong> ／
+            宛先: <strong>{{ equipment.client_name }}</strong>
+        </p>
+
+        <!-- サマリーカード -->
+        <div class="row mb-4">
+            {% for cat, info in summary.items() %}
+            <div class="col-md-4 mb-3">
+                <div class="card summary-card">
+                    <div class="card-body d-flex align-items-center">
+                        <div class="category-icon me-3">
+                            {% if cat == '空調' %}
+                            <i class="bi bi-snow"></i>
+                            {% elif cat == '住設' %}
+                            <i class="bi bi-droplet"></i>
+                            {% else %}
+                            <i class="bi bi-wrench"></i>
+                            {% endif %}
+                        </div>
+                        <div>
+                            <h6 class="mb-1">{{ cat }}</h6>
+                            <span class="text-muted">{{ info.count }}点</span>
+                            <span class="ms-2 fw-bold">&yen;{{ "{:,.0f}".format(info.total_list_price) }}</span>
+                            <small class="text-muted">（定価計）</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- カテゴリタブ -->
+        <ul class="nav nav-tabs category-tabs" id="categoryTabs">
+            <li class="nav-item">
+                <a class="nav-link active" data-bs-toggle="tab" href="#all">
+                    全て ({{ equipment.items|length }})
+                </a>
+            </li>
+            {% for cat in categories %}
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#cat-{{ loop.index }}">
+                    {% if cat == '空調' %}<i class="bi bi-snow"></i>
+                    {% elif cat == '住設' %}<i class="bi bi-droplet"></i>
+                    {% else %}<i class="bi bi-wrench"></i>{% endif %}
+                    {{ cat }} ({{ category_items[cat]|length }})
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <div class="tab-content mt-0">
+            <!-- 全て -->
+            <div class="tab-pane fade show active" id="all">
+                <div class="table-responsive">
+                    <table class="table table-hover equipment-table mb-0">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>カテゴリ</th>
+                                <th>メーカー</th>
+                                <th>型番</th>
+                                <th>品名</th>
+                                <th>数量</th>
+                                <th>単位</th>
+                                <th>定価(税抜)</th>
+                                <th>設置場所</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in equipment.items %}
+                            <tr data-index="{{ loop.index0 }}">
+                                <td>{{ loop.index }}</td>
+                                <td><span class="badge
+                                    {% if item.category == '空調' %}bg-info
+                                    {% elif item.category == '住設' %}bg-success
+                                    {% else %}bg-warning text-dark{% endif %}">
+                                    {{ item.category }}</span></td>
+                                <td>{{ item.maker }}</td>
+                                <td><code>{{ item.model }}</code></td>
+                                <td class="editable" data-field="name">{{ item.name }}</td>
+                                <td class="editable text-end" data-field="quantity">{{ item.quantity }}</td>
+                                <td>{{ item.unit }}</td>
+                                <td class="text-end">&yen;{{ "{:,.0f}".format(item.list_price) }}</td>
+                                <td class="text-muted small">{{ item.location }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- カテゴリ別 -->
+            {% for cat in categories %}
+            <div class="tab-pane fade" id="cat-{{ loop.index }}">
+                <div class="table-responsive">
+                    <table class="table table-hover equipment-table mb-0">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>メーカー</th>
+                                <th>型番</th>
+                                <th>品名</th>
+                                <th>数量</th>
+                                <th>単位</th>
+                                <th>定価(税抜)</th>
+                                <th>設置場所</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in category_items[cat] %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td>{{ item.maker }}</td>
+                                <td><code>{{ item.model }}</code></td>
+                                <td>{{ item.name }}</td>
+                                <td class="text-end">{{ item.quantity }}</td>
+                                <td>{{ item.unit }}</td>
+                                <td class="text-end">&yen;{{ "{:,.0f}".format(item.list_price) }}</td>
+                                <td class="text-muted small">{{ item.location }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

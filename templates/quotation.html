@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+
+{% block title %}見積書プレビュー{% endblock %}
+
+{% block content %}
+<!-- ステップ -->
+<div class="step-indicator no-print">
+    <div class="step">
+        <div class="step-num">1</div>
+        <span>アップロード</span>
+    </div>
+    <div class="step-divider"></div>
+    <div class="step">
+        <div class="step-num">2</div>
+        <span>データ確認</span>
+    </div>
+    <div class="step-divider"></div>
+    <div class="step active">
+        <div class="step-num">3</div>
+        <span>見積書作成</span>
+    </div>
+</div>
+
+<!-- 操作ボタン -->
+<div class="d-flex justify-content-between align-items-center mb-3 no-print">
+    <h3><i class="bi bi-file-text"></i> 見積書プレビュー</h3>
+    <div>
+        <a href="/" class="btn btn-outline-secondary me-2">
+            <i class="bi bi-arrow-left"></i> 最初から
+        </a>
+        <button class="btn btn-outline-primary me-2" onclick="window.print()">
+            <i class="bi bi-printer"></i> 印刷
+        </button>
+        <a href="/pdf?data={{ pdf_data }}" class="btn btn-danger" target="_blank">
+            <i class="bi bi-file-pdf"></i> PDF出力
+        </a>
+    </div>
+</div>
+
+<!-- 宛先・件名編集 -->
+<div class="card mb-3 no-print">
+    <div class="card-body py-2">
+        <div class="row align-items-center">
+            <div class="col-md-5">
+                <label class="form-label mb-0 small text-muted">宛先</label>
+                <input type="text" class="form-control form-control-sm" id="editClient"
+                       value="{{ quotation.client_name }}" onchange="updatePreview()">
+            </div>
+            <div class="col-md-5">
+                <label class="form-label mb-0 small text-muted">件名</label>
+                <input type="text" class="form-control form-control-sm" id="editProject"
+                       value="{{ quotation.project_name }} 設備機器" onchange="updatePreview()">
+            </div>
+            <div class="col-md-2 text-end">
+                <button class="btn btn-sm btn-outline-primary mt-3" onclick="updatePreview()">反映</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 見積書本体 -->
+<div class="quotation-preview" id="quotationPreview">
+    <div class="q-title">見　積　書</div>
+
+    <div class="q-header">
+        <div>
+            <div class="q-client" id="displayClient">{{ quotation.client_name }} 御中</div>
+            <div class="mt-3">
+                <div>件名: <span id="displayProject">{{ quotation.project_name }} 設備機器</span></div>
+            </div>
+        </div>
+        <div class="text-end">
+            <div>見積番号: {{ quotation.estimate_number }}</div>
+            <div>見積日: {{ quotation.estimate_date_jp }}</div>
+            <div class="mt-3">
+                <strong>{{ quotation.company_info.name }}</strong><br>
+                <small>
+                    {{ quotation.company_info.postal_code }}<br>
+                    {{ quotation.company_info.address }}<br>
+                    TEL: {{ quotation.company_info.tel }}<br>
+                    FAX: {{ quotation.company_info.fax }}
+                </small>
+            </div>
+        </div>
+    </div>
+
+    <div class="q-total-box">
+        <div>合計金額（税込）</div>
+        <div class="amount">&yen;{{ "{:,.0f}".format(quotation.total) }}</div>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th style="width:40px">No.</th>
+                <th>品名</th>
+                <th>型番</th>
+                <th>メーカー</th>
+                <th style="width:50px">数量</th>
+                <th style="width:40px">単位</th>
+                <th style="width:100px">単価</th>
+                <th style="width:110px">金額</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in quotation.items %}
+            <tr>
+                <td class="text-center">{{ item.no }}</td>
+                <td>{{ item.name }}</td>
+                <td><code style="font-size:0.75rem">{{ item.model }}</code></td>
+                <td>{{ item.maker }}</td>
+                <td class="text-end">{{ item.quantity }}</td>
+                <td class="text-center">{{ item.unit }}</td>
+                <td class="text-end">&yen;{{ "{:,.0f}".format(item.unit_price) }}</td>
+                <td class="text-end">&yen;{{ "{:,.0f}".format(item.amount) }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <table class="q-summary" style="margin-left:auto; width:300px;">
+        <tr>
+            <td>小計</td>
+            <td class="text-end">&yen;{{ "{:,.0f}".format(quotation.subtotal) }}</td>
+        </tr>
+        <tr>
+            <td>消費税（10%）</td>
+            <td class="text-end">&yen;{{ "{:,.0f}".format(quotation.tax) }}</td>
+        </tr>
+        <tr class="total-row">
+            <td>合計</td>
+            <td class="text-end">&yen;{{ "{:,.0f}".format(quotation.total) }}</td>
+        </tr>
+    </table>
+
+    <div class="mt-4 small text-muted">
+        <p>【備考】</p>
+        <ul>
+            <li>本見積書の有効期限は発行日より30日間とします。</li>
+            <li>上記金額には工事費は含まれておりません。</li>
+            <li>納期は別途ご相談ください。</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+function updatePreview() {
+    const client = document.getElementById('editClient').value;
+    const project = document.getElementById('editProject').value;
+    document.getElementById('displayClient').textContent = client + ' 御中';
+    document.getElementById('displayProject').textContent = project;
+}
+</script>
+{% endblock %}

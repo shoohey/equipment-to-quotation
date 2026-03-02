@@ -1,0 +1,155 @@
+{
+  "空調": [
+    {
+      "maker": "ダイキン",
+      "model": "SZRC80BYT",
+      "name": "Eco ZEAS 天井カセット4方向 3馬力",
+      "list_price": 1350000,
+      "unit": "台"
+    },
+    {
+      "maker": "ダイキン",
+      "model": "SZRC160BY",
+      "name": "Eco ZEAS 天井カセット4方向 6馬力",
+      "list_price": 1780000,
+      "unit": "台"
+    },
+    {
+      "maker": "三菱電機",
+      "model": "PLZ-ERMP80EL5",
+      "name": "スリムER 天井カセット4方向 3馬力",
+      "list_price": 1280000,
+      "unit": "台"
+    },
+    {
+      "maker": "三菱電機",
+      "model": "PLZ-ERMP160EM5",
+      "name": "スリムER 天井カセット4方向 6馬力",
+      "list_price": 1680000,
+      "unit": "台"
+    },
+    {
+      "maker": "ダイキン",
+      "model": "SZRA50BYT",
+      "name": "Eco ZEAS 壁掛形 2馬力",
+      "list_price": 680000,
+      "unit": "台"
+    },
+    {
+      "maker": "三菱電機",
+      "model": "LGH-N35RS",
+      "name": "業務用ロスナイ 天井埋込形",
+      "list_price": 158000,
+      "unit": "台"
+    },
+    {
+      "maker": "パナソニック",
+      "model": "FY-32JK8",
+      "name": "天井埋込形換気扇",
+      "list_price": 18500,
+      "unit": "台"
+    }
+  ],
+  "住設": [
+    {
+      "maker": "TOTO",
+      "model": "CES9898R",
+      "name": "ネオレスト NX タンクレストイレ",
+      "list_price": 598000,
+      "unit": "台"
+    },
+    {
+      "maker": "TOTO",
+      "model": "CS232B+SH233BA",
+      "name": "ピュアレストQR 組合せ便器",
+      "list_price": 148000,
+      "unit": "台"
+    },
+    {
+      "maker": "LIXIL",
+      "model": "YBC-CL10S+DT-CL116A",
+      "name": "プレアスLS タンクレストイレ",
+      "list_price": 368000,
+      "unit": "台"
+    },
+    {
+      "maker": "TOTO",
+      "model": "TLHG30AER",
+      "name": "台付シングル混合水栓",
+      "list_price": 32500,
+      "unit": "台"
+    },
+    {
+      "maker": "LIXIL",
+      "model": "BF-WM147TSG",
+      "name": "サーモスタット付シャワーバス水栓",
+      "list_price": 68000,
+      "unit": "台"
+    },
+    {
+      "maker": "TOTO",
+      "model": "LSC704AAPN",
+      "name": "壁掛洗面器",
+      "list_price": 45000,
+      "unit": "台"
+    },
+    {
+      "maker": "LIXIL",
+      "model": "AR3N-755SY",
+      "name": "ミラーキャビネット",
+      "list_price": 89000,
+      "unit": "台"
+    }
+  ],
+  "管材": [
+    {
+      "maker": "積水化学",
+      "model": "VP-50",
+      "name": "硬質塩化ビニル管 50A",
+      "list_price": 2850,
+      "unit": "m"
+    },
+    {
+      "maker": "積水化学",
+      "model": "HT-VP40",
+      "name": "耐熱性塩化ビニル管 40A",
+      "list_price": 3200,
+      "unit": "m"
+    },
+    {
+      "maker": "ベンカン",
+      "model": "SUS-T-50A",
+      "name": "ステンレス製チーズ 50A",
+      "list_price": 4800,
+      "unit": "個"
+    },
+    {
+      "maker": "キッツ",
+      "model": "EA200-TNE-25A",
+      "name": "青銅製ボールバルブ 25A",
+      "list_price": 5600,
+      "unit": "個"
+    },
+    {
+      "maker": "キッツ",
+      "model": "EAE200-TNE-50A",
+      "name": "青銅製ボールバルブ 50A",
+      "list_price": 12800,
+      "unit": "個"
+    },
+    {
+      "maker": "日立金属",
+      "model": "ZL-20A",
+      "name": "白継手 エルボ 20A",
+      "list_price": 380,
+      "unit": "個"
+    },
+    {
+      "maker": "未来工業",
+      "model": "MFSK-16",
+      "name": "さや管 16A",
+      "list_price": 180,
+      "unit": "m"
+    }
+  ]
+}

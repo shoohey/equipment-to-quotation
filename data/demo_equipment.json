@@ -1,0 +1,206 @@
+{
+  "project_name": "サンプルビル新築工事",
+  "client_name": "〇〇建設株式会社",
+  "items": [
+    {
+      "category": "空調",
+      "maker": "ダイキン",
+      "model": "SZRC80BYT",
+      "name": "Eco ZEAS 天井カセット4方向 3馬力",
+      "quantity": 4,
+      "unit": "台",
+      "list_price": 1350000,
+      "location": "1F〜3F 事務室"
+    },
+    {
+      "category": "空調",
+      "maker": "ダイキン",
+      "model": "SZRC160BY",
+      "name": "Eco ZEAS 天井カセット4方向 6馬力",
+      "quantity": 2,
+      "unit": "台",
+      "list_price": 1780000,
+      "location": "1F エントランスホール"
+    },
+    {
+      "category": "空調",
+      "maker": "三菱電機",
+      "model": "PLZ-ERMP80EL5",
+      "name": "スリムER 天井カセット4方向 3馬力",
+      "quantity": 2,
+      "unit": "台",
+      "list_price": 1280000,
+      "location": "2F〜3F 会議室"
+    },
+    {
+      "category": "空調",
+      "maker": "ダイキン",
+      "model": "SZRA50BYT",
+      "name": "Eco ZEAS 壁掛形 2馬力",
+      "quantity": 2,
+      "unit": "台",
+      "list_price": 680000,
+      "location": "1F 受付・休憩室"
+    },
+    {
+      "category": "空調",
+      "maker": "三菱電機",
+      "model": "LGH-N35RS",
+      "name": "業務用ロスナイ 天井埋込形",
+      "quantity": 4,
+      "unit": "台",
+      "list_price": 158000,
+      "location": "各階 共用部"
+    },
+    {
+      "category": "空調",
+      "maker": "パナソニック",
+      "model": "FY-32JK8",
+      "name": "天井埋込形換気扇",
+      "quantity": 6,
+      "unit": "台",
+      "list_price": 18500,
+      "location": "各階 トイレ・給湯室"
+    },
+    {
+      "category": "住設",
+      "maker": "TOTO",
+      "model": "CES9898R",
+      "name": "ネオレスト NX タンクレストイレ",
+      "quantity": 2,
+      "unit": "台",
+      "list_price": 598000,
+      "location": "1F 役員フロア"
+    },
+    {
+      "category": "住設",
+      "maker": "TOTO",
+      "model": "CS232B+SH233BA",
+      "name": "ピュアレストQR 組合せ便器",
+      "quantity": 4,
+      "unit": "台",
+      "list_price": 148000,
+      "location": "各階 共用トイレ"
+    },
+    {
+      "category": "住設",
+      "maker": "LIXIL",
+      "model": "YBC-CL10S+DT-CL116A",
+      "name": "プレアスLS タンクレストイレ",
+      "quantity": 2,
+      "unit": "台",
+      "list_price": 368000,
+      "location": "2F〜3F 多目的トイレ"
+    },
+    {
+      "category": "住設",
+      "maker": "TOTO",
+      "model": "TLHG30AER",
+      "name": "台付シングル混合水栓",
+      "quantity": 4,
+      "unit": "台",
+      "list_price": 32500,
+      "location": "各階 給湯室"
+    },
+    {
+      "category": "住設",
+      "maker": "LIXIL",
+      "model": "BF-WM147TSG",
+      "name": "サーモスタット付シャワーバス水栓",
+      "quantity": 2,
+      "unit": "台",
+      "list_price": 68000,
+      "location": "1F シャワー室"
+    },
+    {
+      "category": "住設",
+      "maker": "TOTO",
+      "model": "LSC704AAPN",
+      "name": "壁掛洗面器",
+      "quantity": 4,
+      "unit": "台",
+      "list_price": 45000,
+      "location": "各階 洗面所"
+    },
+    {
+      "category": "住設",
+      "maker": "LIXIL",
+      "model": "AR3N-755SY",
+      "name": "ミラーキャビネット",
+      "quantity": 4,
+      "unit": "台",
+      "list_price": 89000,
+      "location": "各階 洗面所"
+    },
+    {
+      "category": "管材",
+      "maker": "積水化学",
+      "model": "VP-50",
+      "name": "硬質塩化ビニル管 50A",
+      "quantity": 120,
+      "unit": "m",
+      "list_price": 2850,
+      "location": "全館"
+    },
+    {
+      "category": "管材",
+      "maker": "積水化学",
+      "model": "HT-VP40",
+      "name": "耐熱性塩化ビニル管 40A",
+      "quantity": 80,
+      "unit": "m",
+      "list_price": 3200,
+      "location": "全館 給湯配管"
+    },
+    {
+      "category": "管材",
+      "maker": "ベンカン",
+      "model": "SUS-T-50A",
+      "name": "ステンレス製チーズ 50A",
+      "quantity": 24,
+      "unit": "個",
+      "list_price": 4800,
+      "location": "全館"
+    },
+    {
+      "category": "管材",
+      "maker": "キッツ",
+      "model": "EA200-TNE-25A",
+      "name": "青銅製ボールバルブ 25A",
+      "quantity": 16,
+      "unit": "個",
+      "list_price": 5600,
+      "location": "各階 PS内"
+    },
+    {
+      "category": "管材",
+      "maker": "キッツ",
+      "model": "EAE200-TNE-50A",
+      "name": "青銅製ボールバルブ 50A",
+      "quantity": 8,
+      "unit": "個",
+      "list_price": 12800,
+      "location": "地下 機械室"
+    },
+    {
+      "category": "管材",
+      "maker": "日立金属",
+      "model": "ZL-20A",
+      "name": "白継手 エルボ 20A",
+      "quantity": 60,
+      "unit": "個",
+      "list_price": 380,
+      "location": "全館"
+    },
+    {
+      "category": "管材",
+      "maker": "未来工業",
+      "model": "MFSK-16",
+      "name": "さや管 16A",
+      "quantity": 200,
+      "unit": "m",
+      "list_price": 180,
+      "location": "全館"
+    }
+  ]
+}

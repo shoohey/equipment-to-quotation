@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block title %}機器表アップロード{% endblock %}
+
+{% block content %}
+<!-- ステップ -->
+<div class="step-indicator">
+    <div class="step active">
+        <div class="step-num">1</div>
+        <span>アップロード</span>
+    </div>
+    <div class="step-divider"></div>
+    <div class="step">
+        <div class="step-num">2</div>
+        <span>データ確認</span>
+    </div>
+    <div class="step-divider"></div>
+    <div class="step">
+        <div class="step-num">3</div>
+        <span>見積書作成</span>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card shadow-sm">
+            <div class="card-body p-4">
+                <h2 class="card-title text-center mb-4">
+                    <i class="bi bi-file-earmark-spreadsheet text-primary"></i>
+                    機器表から見積書を自動生成
+                </h2>
+                <p class="text-center text-muted mb-4">
+                    A3の機器表（Excel）をアップロードするだけで、<br>
+                    AIが品番・数量を自動認識し、見積書を作成します。
+                </p>
+
+                <!-- アップロードエリア -->
+                <form id="uploadForm" action="/upload" method="post" enctype="multipart/form-data">
+                    <div class="upload-area" id="uploadArea">
+                        <div class="upload-icon">
+                            <i class="bi bi-cloud-arrow-up"></i>
+                        </div>
+                        <h4>Excel機器表をドラッグ&ドロップ</h4>
+                        <p class="text-muted">または クリックしてファイルを選択</p>
+                        <p class="text-muted small">対応形式: .xlsx, .xls（最大16MB）</p>
+                        <input type="file" id="fileInput" name="file" accept=".xlsx,.xls" class="d-none">
+                    </div>
+                    <div id="fileInfo" class="text-center mt-3 d-none">
+                        <span class="badge bg-success fs-6" id="fileName"></span>
+                        <button type="submit" class="btn btn-primary btn-lg ms-3">
+                            <i class="bi bi-cpu"></i> AI解析を開始
+                        </button>
+                    </div>
+                </form>
+
+                <hr class="my-4">
+
+                <!-- デモボタン -->
+                <div class="text-center">
+                    <p class="text-muted mb-3">Excelファイルがない場合はデモデータでお試しいただけます</p>
+                    <form action="/demo" method="post" id="demoForm">
+                        <button type="submit" class="btn btn-demo" id="demoBtn">
+                            <i class="bi bi-play-circle"></i> デモデータで試す
+                        </button>
+                    </form>
+                    <p class="text-muted small mt-2">
+                        「サンプルビル新築工事」(空調・住設・管材 約20品目) のデモ
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 特長 -->
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <div class="card text-center p-3 h-100">
+                    <div class="card-body">
+                        <i class="bi bi-lightning-charge text-primary fs-1"></i>
+                        <h6 class="mt-2">高速変換</h6>
+                        <small class="text-muted">機器表を数秒で見積書に変換</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center p-3 h-100">
+                    <div class="card-body">
+                        <i class="bi bi-pencil-square text-primary fs-1"></i>
+                        <h6 class="mt-2">編集可能</h6>
+                        <small class="text-muted">抽出データを確認・修正可能</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center p-3 h-100">
+                    <div class="card-body">
+                        <i class="bi bi-file-pdf text-primary fs-1"></i>
+                        <h6 class="mt-2">PDF出力</h6>
+                        <small class="text-muted">正式な見積書をPDFで出力</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- AI解析アニメーション -->
+<div class="analyzing-overlay" id="analyzingOverlay">
+    <div class="spinner-border text-primary" role="status"></div>
+    <p id="analyzingText">AI が機器表を解析しています...</p>
+    <div class="progress analyzing-progress">
+        <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary"
+             id="analyzingProgress" style="width: 0%"></div>
+    </div>
+</div>
+{% endblock %}
